@@ -10,3 +10,4 @@ def get_system_metrics():
         "total_memory": round(memory.total / (1024 ** 3), 2),  # in GB
         "used_memory": round(memory.used / (1024 ** 3), 2)
     }
+
