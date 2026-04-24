@@ -1,6 +1,7 @@
 from flask import Flask, jsonify
 from metrics import get_system_metrics
 from logs.logger import setup_logger
+from ai_handler import analyze_error
 
 app = Flask(__name__)
 logger = setup_logger()
@@ -39,6 +40,32 @@ def get_logs():
 def simulate_warning():
     logger.warning("This is a warning test")
     return {"message": "Warning logged"}
+
+# AI-integration
+
+@app.route("/analyze-log")
+def analyze_log():
+    try:
+        with open("logs/app.log", "r") as f:
+            logs = f.readlines()
+
+        if not logs:
+            return {"message": "No logs found"}
+
+        last_log = logs[-1]
+
+        if "ERRORS" not in last_log:
+            return {"message" : "No error found in the logs"}
+
+        explanation = analyze_error(last_log)
+
+        return {
+            "log": last_log,
+            "ai_explanation": explanation
+        }
+
+    except Exception as e:
+        return {"error": str(e)}, 500
 
 
 if __name__ == "__main__":
