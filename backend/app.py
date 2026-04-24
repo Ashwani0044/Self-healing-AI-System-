@@ -2,8 +2,10 @@ from flask import Flask, jsonify
 from metrics import get_system_metrics
 from logs.logger import setup_logger
 from ai_handler import analyze_error
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 logger = setup_logger()
 
 @app.route("/")
