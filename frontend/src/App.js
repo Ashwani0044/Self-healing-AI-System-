@@ -4,7 +4,7 @@ import Dashboard from "./Dashboard";
 function App() {
   return (
     <div>
-      <h1>Self-Healing AI Dashboard</h1>
+      <h1 style="text-align: center">Self-Healing AI Dashboard</h1>
       <Dashboard />
     </div>
   );

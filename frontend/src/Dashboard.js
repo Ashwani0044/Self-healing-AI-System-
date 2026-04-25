@@ -84,11 +84,11 @@ function Dashboard() {
       <div className="metrics-grid">
         {metrics ? (
           <>
-            <div className="metric-card">
+            <div className={`metric-card ${metrics.cpu > 80 ? "high" : ""}`}>
               <span className="metric-label">CPU Usage</span>
               <div className="metric-value">{metrics.cpu}%</div>
             </div>
-            <div className="metric-card">
+            <div className={`metric-card ${metrics.cpu > 80 ? "high" : ""}`}>
               <span className="metric-label">Memory Usage</span>
               <div className="metric-value">{metrics.memory_percent}%</div>
             </div>
