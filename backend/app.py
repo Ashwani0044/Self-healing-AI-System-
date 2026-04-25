@@ -56,8 +56,8 @@ def analyze_log():
 
         last_log = logs[-1]
 
-        if "ERRORS" not in last_log:
-            return {"message" : "No error found in the logs"}
+        # if "ERRORS" not in last_log:
+        #     return {"message" : "No error found in the logs"}
 
         explanation = analyze_error(last_log)
 
